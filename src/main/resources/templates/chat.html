@@ -14,7 +14,7 @@
 <div id="chat-container">
     <div class="chat-header">
         <div class="user-container">
-            <span id="username" th:utext="${username}"></span>
+            <span id="username" th:utext="${username}" th:style="'color:'+${usercolor}"></span>
             <a th:href="@{/logout}">Выйти</a>
         </div>
         <h3>The Biber Project</h3>
@@ -26,6 +26,9 @@
     <ul id="messageArea">
     </ul>
     <form id="messageForm" name="messageForm">
+        <select>
+            <option id="userSelector" th:value="${item}" th:each="item : ${users}" th:text="${item}"/>
+        </select>
         <div class="input-message">
             <input type="text" id="message" autocomplete="off"
                    placeholder="Введите сообщение..."/>
@@ -37,7 +40,7 @@
     <div>
         <h2>Онлайн:</h2>
         <ul>
-            <li th:each="item : ${users}" th:text="${item}">Item description here...</li>
+            <li th:each="item : ${allUsers}" th:text="${item}">Item description here...</li>
         </ul>
     </div>
 

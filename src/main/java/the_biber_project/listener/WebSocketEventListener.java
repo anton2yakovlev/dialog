@@ -29,6 +29,7 @@ public class WebSocketEventListener {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         String username = (String) headerAccessor.getSessionAttributes().get("username");
+        String usercolor = (String) headerAccessor.getSessionAttributes().get("usercolor");
 
         if(username != null) {
             logger.info("Пользователь вышел : " + username);
@@ -36,6 +37,7 @@ public class WebSocketEventListener {
             Message message = new Message();
             message.setType(Message.MessageType.LEAVE);
             message.setSender(username);
+            message.setUsercolor(usercolor);
 
             messagingTemplate.convertAndSend("/topic/publicChatRoom", message);
         }

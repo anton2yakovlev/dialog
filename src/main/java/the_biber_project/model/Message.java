@@ -7,7 +7,8 @@ public class Message {
     private MessageType type;
     private String content;
     private String sender;
-    private String color;
+    private String recepient;
+    private String usercolor;
     private String time;
 
     public Message(){
@@ -53,10 +54,17 @@ public class Message {
     }
 
 
-    public String getColor() { return color; }
+    public String getUsercolor() { return usercolor; }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setUsercolor(String usercolor) {
+        this.usercolor = usercolor;
     }
 
+    public String getRecepient() {
+        return recepient;
+    }
+
+    public void setRecepient(String recepient) {
+        this.recepient = recepient;
+    }
 }

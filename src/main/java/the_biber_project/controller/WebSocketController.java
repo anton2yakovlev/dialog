@@ -13,11 +13,9 @@ import java.util.Date;
 @Controller
 public class WebSocketController {
 
-
-
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/publicChatRoom")
-    public Message sendMessage(@Payload Message chatMessage) {
+    public Message sendMessage(@Payload Message chatMessage, SimpMessageHeaderAccessor headerAccessor) {
         return chatMessage;
     }
 
@@ -26,6 +24,7 @@ public class WebSocketController {
     public Message addUser(@Payload Message chatMessage, SimpMessageHeaderAccessor headerAccessor) {
         // Add username in web socket session
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        headerAccessor.getSessionAttributes().put("usercolor", "red");
 
         return chatMessage;
     }

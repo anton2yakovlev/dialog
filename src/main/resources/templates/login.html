@@ -7,11 +7,19 @@
 <body>
 <p><h1 align="center">The <font color="red">Bi</font>ber Project</h1></p>
 <p><div id="login-container">
-    <h2 class="title">Введите никнейм:</h2>
+    <h2 class="title">Введите данные:</h2>
     <form id="loginForm" name="loginForm" method="POST">
-        <input type="text" name="username" />
+        <label>Никнейм</label>
+        <input type="text" name="username" /></br>
+        <label>Пароль</label>
+        <input type="text" name="password" /></br>
         <button type="submit">Войти</button>
     </form>
+    <div class="pull-right">
+        <a th:href="@{/signup}">
+          Регистрация
+        </a>
+    </div>
 </div></p>
 </body>
 </html>
